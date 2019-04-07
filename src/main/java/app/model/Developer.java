@@ -8,7 +8,7 @@ public class Developer extends BaseEntity {
     private Set<Skill> skills;
     private Account account;
 
-    public Developer(Long id, String firstName, String lastName, Set<Skill> skills, Account account) {
+    public Developer(Integer id, String firstName, String lastName, Set<Skill> skills, Account account) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;

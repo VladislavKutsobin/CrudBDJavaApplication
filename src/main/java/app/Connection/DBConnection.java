@@ -1,8 +1,9 @@
 package app.Connection;
 import java.sql.*;
+import java.util.TimeZone;
 
 public class DBConnection {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/crudDB";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/testDB?serverTimezone=" + TimeZone.getDefault().getID();
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";

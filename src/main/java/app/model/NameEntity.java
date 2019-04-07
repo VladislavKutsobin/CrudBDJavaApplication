@@ -3,7 +3,7 @@ package app.model;
 public class NameEntity extends BaseEntity {
     private String name;
 
-    public NameEntity(Long id, String name) {
+    public NameEntity(int id, String name) {
         super(id);
         this.name = name;
     }

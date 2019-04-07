@@ -2,5 +2,5 @@ package app.repository;
 
 import app.model.Developer;
 
-public interface DeveloperRepository extends GenericRepository<Developer, Long> {
+public interface DeveloperRepository extends GenericRepository<Developer, Integer> {
 }
