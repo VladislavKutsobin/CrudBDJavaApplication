@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                     http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="ta4anka" id="11">
+        <sql>
+            INSERT INTO skills(name) VALUES
+
+            ('Java'),
+            ('C++'),
+            ('C'),
+            ('HTML'),
+            ('JavaScript'),
+            ('Ruby'),
+            ('Python'),
+            ('R'),
+            ('PHP'),
+            ('C#');
+
+            INSERT INTO developers(firstname, lastname) VALUES
+
+            ('Robert', 'Downey Jr.'),
+            ('Chris', 'Evans'),
+            ('Mark', 'Ruffalo'),
+            ('Chris', 'Hemsworth'),
+            ('Scarlett', 'Johansson'),
+            ('Clark', 'Gregg');
+
+            INSERT INTO accounts(login, developerdata) VALUES
+
+            ('Ironman', 'This is ironman'),
+            ('CaptainUSA', 'This is captain'),
+            ('Hulk', 'HUUUUUUUULK'),
+            ('Tor', 'GOD...'),
+            ('BlackWid', 'Pretty nice woman'),
+            ('Callman', 'Noname haha..');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
