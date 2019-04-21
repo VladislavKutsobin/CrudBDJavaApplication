@@ -8,12 +8,10 @@ public class Developer extends BaseEntity {
     private Set<Skill> skills;
     private Account account;
 
-    public Developer(Integer id, String firstName, String lastName, Set<Skill> skills, Account account) {
+    public Developer(Integer id, String firstName, String lastName) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.skills = skills;
-        this.account = account;
     }
 
     public String getFirstName() {

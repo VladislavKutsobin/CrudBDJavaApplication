@@ -1,8 +1,12 @@
 package app.model;
 
+import java.util.Set;
+
 public class Account extends BaseEntity {
     private String login;
     private String developerData;
+    private Set<Developer> developers;
+
 
     public Account(Integer id, String login, String developerData) {
         super(id);
@@ -24,5 +28,13 @@ public class Account extends BaseEntity {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Set<Developer> getDevelopers() {
+        return developers;
+    }
+
+    public void setDevelopers(Set<Developer> developers) {
+        this.developers = developers;
     }
 }
