@@ -1,10 +1,9 @@
 package app.repository.Impl;
 
-import app.Connection.DBConnection;
+import app.util.UtilConnection;
 import app.model.Skill;
 import app.repository.SkillRepository;
 
-import javax.smartcardio.CommandAPDU;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class SkillRepositoryImpl implements SkillRepository {
     public void create(Skill skill) throws SQLException, ClassNotFoundException {
         String query = "INSERT INTO skills(name) VALUES (?)";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, skill.getName());
             preparedStatement.execute();
@@ -23,7 +22,7 @@ public class SkillRepositoryImpl implements SkillRepository {
     public List<Skill> findAll() throws SQLException, ClassNotFoundException {
         List<Skill> skillList = new ArrayList<>();
         String query = "SELECT * FROM skills";
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query)) {
             while(resultSet.next()) {
@@ -39,7 +38,7 @@ public class SkillRepositoryImpl implements SkillRepository {
     public void update(Skill skill) throws SQLException, ClassNotFoundException {
         String query = "UPDATE skills SET name = ? WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1,skill.getName());
             preparedStatement.setInt(2,skill.getId());
@@ -51,7 +50,7 @@ public class SkillRepositoryImpl implements SkillRepository {
     public void delete(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "DELETE from skills WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, integer);
             preparedStatement.execute();
@@ -61,7 +60,7 @@ public class SkillRepositoryImpl implements SkillRepository {
     @Override
     public Skill getByID(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM skills WHERE id = ?";
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, integer);
             ResultSet resultSet = preparedStatement.executeQuery();

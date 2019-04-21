@@ -1,6 +1,6 @@
 package app.repository.Impl;
 
-import app.Connection.DBConnection;
+import app.util.UtilConnection;
 import app.model.Account;
 import app.model.Developer;
 import app.repository.AccountRepository;
@@ -16,7 +16,7 @@ public class AccountRepositoryImpl implements AccountRepository {
         String accountQuery = "INSERT INTO accounts(login, developerData) VALUES(?, ?)";
         String accountDeveloperQuery = "INSERT INTO developers_accounts(developer_id, account_id) VALUES (?, ?)";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
             PreparedStatement preparedAccountStatement = connection.prepareStatement(accountQuery);
             PreparedStatement preparedDeveloperAccountStatement = connection.prepareStatement(accountDeveloperQuery)) {
             preparedAccountStatement.setString(1, "login");
@@ -42,7 +42,7 @@ public class AccountRepositoryImpl implements AccountRepository {
         List<Account> accountList = new ArrayList<>();
         String query = "SELECT * FROM accounts";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query)) {
                 while(resultSet.next()) {
@@ -60,7 +60,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     public void update(Account account) throws SQLException, ClassNotFoundException {
         String query = "UPDATE account SET login = ?, developerData = ? WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, account.getLogin());
             preparedStatement.setString(2, account.getDeveloperData());
@@ -73,7 +73,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     public void delete(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "DELETE FROM account WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1,integer);
             preparedStatement.execute();
@@ -84,7 +84,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     public Account getByID(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM accounts WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)
         ){
             preparedStatement.setInt(1,integer);

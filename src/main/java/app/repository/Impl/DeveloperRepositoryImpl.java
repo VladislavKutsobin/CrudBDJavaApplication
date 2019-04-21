@@ -1,6 +1,6 @@
 package app.repository.Impl;
 
-import app.Connection.DBConnection;
+import app.util.UtilConnection;
 import app.model.Developer;
 import app.model.Skill;
 import app.repository.DeveloperRepository;
@@ -16,7 +16,7 @@ public class DeveloperRepositoryImpl implements DeveloperRepository {
         String developerQuery = "INSERT INTO developers(firstname, lastname) VALUES (?, ?)";
         String developerSkillsQuery = "INSERT INTO developers_skills(developer_id, skill_id) VALUES (?, ?))";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
             PreparedStatement preparedStatementDeveloper = connection.prepareStatement(developerQuery, Statement.RETURN_GENERATED_KEYS);
             PreparedStatement preparedStatementDeveloperSkills = connection.prepareStatement(developerSkillsQuery)) {
             preparedStatementDeveloper.setString(1,developer.getFirstName());
@@ -43,7 +43,7 @@ public class DeveloperRepositoryImpl implements DeveloperRepository {
         String query = "SELECT * FROM developers";
         List<Developer> developerList = new ArrayList<>();
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query)) {
             while(resultSet.next()) {
@@ -61,7 +61,7 @@ public class DeveloperRepositoryImpl implements DeveloperRepository {
     public void update(Developer developer) throws SQLException, ClassNotFoundException {
         String query = "UPDATE developers SET firstName = ?, lastName = ? WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1,developer.getFirstName());
             preparedStatement.setString(2, developer.getLastName());
@@ -73,7 +73,7 @@ public class DeveloperRepositoryImpl implements DeveloperRepository {
     @Override
     public void delete(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "DELETE FROM developers WHERE id = ?";
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1,integer);
             preparedStatement.execute();
@@ -84,7 +84,7 @@ public class DeveloperRepositoryImpl implements DeveloperRepository {
     public Developer getByID(Integer integer) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM developers WHERE id = ?";
 
-        try(Connection connection = DBConnection.getDBConnection();
+        try(Connection connection = UtilConnection.getUtilConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, integer);
             ResultSet resultSet = preparedStatement.executeQuery();
