@@ -13,7 +13,7 @@ INSERT INTO skills(name) VALUES
 ('PHP'),
 ('C#');
 
-INSERT INTO users(firstname, lastname) VALUES
+INSERT INTO developers(firstname, lastname) VALUES
 
 ('Robert', 'Downey Jr.'),
 ('Chris', 'Evans'),
