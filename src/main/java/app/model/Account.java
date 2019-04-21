@@ -5,9 +5,9 @@ import java.util.Set;
 public class Account extends BaseEntity {
     private String login;
     private String developerData;
-    private Set<Developer> developers;
+    private Developer developer;
 
-
+    public Account() {}
     public Account(Integer id, String login, String developerData) {
         super(id);
         this.developerData = developerData;
@@ -30,11 +30,11 @@ public class Account extends BaseEntity {
         this.login = login;
     }
 
-    public Set<Developer> getDevelopers() {
-        return developers;
+    public Developer getDeveloper() {
+        return developer;
     }
 
-    public void setDevelopers(Set<Developer> developers) {
-        this.developers = developers;
+    public void setDeveloper(Developer developer) {
+        this.developer = developer;
     }
 }

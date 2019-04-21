@@ -29,12 +29,12 @@ public class AccountRepositoryImpl implements AccountRepository {
                 }
             }
 
-            for(Developer developer : account.getDevelopers()) {
-                preparedDeveloperAccountStatement.setInt(1,developer.getId());
-                preparedDeveloperAccountStatement.setInt(2,account_id);
-                preparedDeveloperAccountStatement.executeUpdate();
-            }
+            Developer developer = account.getDeveloper();
+            preparedDeveloperAccountStatement.setInt(1,developer.getId());
+            preparedDeveloperAccountStatement.setInt(2,account_id);
+            preparedDeveloperAccountStatement.executeUpdate();
         }
+
     }
 
     @Override

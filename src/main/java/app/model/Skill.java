@@ -1,6 +1,8 @@
 package app.model;
 
 public class Skill extends NameEntity {
+    public Skill() {}
+
     public Skill(int id, String name) {
         super(id, name);
     }
